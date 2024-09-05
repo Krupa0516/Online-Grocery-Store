@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Online grocery store</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <a href="/src/main/resources/static/style.css"></a>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="width: 35%;" id="mySidebar">
+        <h3 class="good"><img src="images/User.png" style="width:50px;height:50px;"> Hello User</h3>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">Home</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">Orders</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">Review Your Purchase</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">Wish List</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">Settings</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: 22px;">FAQs</a>
+
+
+
+        <button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size: 22px; color: brown;"><b>Close</b>
+            &times;</button>
+    </div>
+
+    <!-- Page Content -->
+    <div class="top">
+        <div class="main">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><button class="w3-button  w3-xlarge" onclick="w3_open()">☰</button></td>
+                        <td>
+                            <div class="container display-container"></div>
+                            <div class="col-md" id="heading-logo">
+                                <a href="home.html"><h2><img src="images/logo.png" style="width:200px;height:50px;"></h2></a>
+                        </td>
+                        <div class="topnav-right">
+                            <a href="#Addtocart" class="cart"><img src="images/cart.png"
+                                    style="width:60px;height:50px; padding-top: 25%; padding-right: 30%;"></a>
+                        </div>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        </nav>
+        <nav class="navbar-toggler">
+            <form class="d-print-inline" role="search">
+                <input class="form-control me-lg-1" type="search" placeholder="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="container-sm ">
+            <div class="row row-cols-sm-3 row-cols-sm-3 ">
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/fruits.jpeg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Fruits And vegetables</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <a href="bakery.html"><img src="images/dairy.jpeg" class="card-img-top"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">Bakery,cakes and diary</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/cleaning.jpeg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Cleaning and household</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/egg.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Egg, meat and fish</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/beauty.webp" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Beauty and hygiene</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/snacks.jpeg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Snacks</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <a href="oil.html"><img src="images/oil.jpg" class="card-img-top"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">Foodgrain, oil and masala</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/baby.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Baby care</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="cards">
+                        <img src="images/tea.jpeg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Beverages</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    </div>
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- products.html -->
+<form id="product-form">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price">
+  <label for="category">Category:</label>
+  <select id="category" name="category">
+    <option value="">-- Select a category --</option>
+  </select>
+  <button type="submit">Add Product</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function() {
+    console.log('jQuery loaded!');
+
+    // Load categories from server and populate dropdown
+    $.ajax({
+      type: 'GET',
+      url: '/api/categories',
+      success: function(categories) {
+        console.log('Categories loaded:', categories);
+        categories.forEach(function(category) {
+          $('#category').append(`<option value="${category.id}">${category.name}</option>`);
+        });
+      },
+      error: function() {
+        console.log('Error loading categories');
+        alert('Error loading categories');
+      }
+    });
+
+    // Handle form submission
+    $('#product-form').submit(function(e) {
+      e.preventDefault();
+      console.log('Form submitted!');
+      const name = $('#name').val();
+      const price = $('#price').val();
+      const categoryId = $('#category').val();
+      console.log('Form data:', name, price, categoryId);
+      $.ajax({
+        type: 'POST',
+        url: '/api/products/' + categoryId,
+        data: JSON.stringify({ name: name, price: price }),
+        contentType: 'application/json',
+        success: function(product) {
+          console.log('Product added:', product);
+          alert(`Product ${product.name} added!`);
+        },
+        error: function() {
+          console.log('Error adding product');
+          alert('Error adding product');
+        }
+      });
+    });
+  });
+
+  
+</script>
+
+</body>
+</html>

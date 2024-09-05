@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+
+<head>
+
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <script src="https://kit.fontawesome.com/3a3e121ecf.js" crossorigin="anonymous"></script>
+
+    <link th:href="@{/styling.css}" rel="stylesheet">
+</head>
+
+<body>
+    <section>
+
+        <div th:style="'background-image: url(' + @{/images/bg-registration-form-3.jpg} + ');background-size: cover;'">
+            <!-- Content goes here -->
+            <br><br><br>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div th:style="'background-color: rgb(255, 207, 123);'">
+                                <!-- content here -->
+
+                                <div class="card-header text-center fs-2">
+                                    Register Page</div>
+                            </div>
+
+                            <div>
+                                <th:block th:if="${session.msg1}">
+                                    <p class="blink text-center fs-4 text-danger" style="font-weight: bold;">
+                                        [[${session.msg1}]]</p>
+                                    <style>
+                                        .blink {
+                                            animation: blinker 0.8s linear infinite;
+                                        }
+
+                                        @keyframes blinker {
+                                            50% {
+                                                opacity: 0;
+                                            }
+                                        }
+                                    </style>
+                                    <th:block th:text="${#session.removeAttribute('msg1')}"></th:block>
+                                </th:block>
+                            </div>
+
+
+                            <div class="card-body">
+                                <form action="createUser" name="suForm" id="supform" method="post">
+                                    <div class="mb-3">
+                                        <label>Enter Full Name</label> <input type="text" name="fullName"
+                                            class="form-control" required="required" onclick="resetBtn()"
+                                            maxlength="30">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label>Enter Email</label> <input type="email" name="email" class="form-control"
+                                            required="required" onclick="resetBtn()">
+                                        <div id="email-error-message" style="color: red; display: none;">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label>Enter Phone number</label> <input type="number" name="phonenum"
+                                            class="form-control" required="required" maxlength="10" pattern="[0-9]{10}">
+                                        <small class="form-text text-muted">Please enter 10 digits only</small>
+
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Enter Password</label> <input type="password" name="password"
+                                            class="form-control" required="required" onclick="resetBtn()" minlength="8" pattern="[/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@])[a-zA-Z0-9_@-]+$/]{8}">
+                                            <small class="form-text text-muted">Please enter one uppercase, one lowercase and one charater</small>
+                                    </div>
+
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="invalidCheck2" required onclick="resetBtn()">
+                                                    <label class="form-check-label" for="invalidCheck2">
+                                                        Agree to terms and conditions
+                                                    </label>
+
+                                                    <div style="text-align: center;">
+                                    <tr>
+                                        <td><input type="submit" id="submit-btn" value="Sign Up"
+                                                onmouseover="mouseOver()" class="orange-btn"></td>
+                                    </tr>
+                            </div>
+                            <style>
+                                .orange-btn {
+                                    background-color: orange;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    font-size: 16px;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                }
+                            </style>
+                            <script>
+                                const emailInput = document.getElementById("email");
+                                const emailErrorMessage = document.getElementById("email-error-message");
+
+                                emailInput.addEventListener("input", () => {
+                                    if (!emailInput.value.includes("@")) {
+                                        emailErrorMessage.style.display = "block";
+                                    } else {
+                                        emailErrorMessage.style.display = "none";
+                                    }
+                                });
+                            </script>
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <script>
+
+            var a = 0;
+
+            function mouseOver() {
+
+                const fullName = document.forms['suForm']['fullName'].value;
+                //const email = document.forms['suForm']['email'].value;
+                const phonenum = document.forms['suForm']['phonenum'].value;
+                const password = document.forms['suForm']['password'].value;
+                const tick = document.querySelector('#check');
+
+                // const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                const fullNameCheck = /^[^-\s][a-zA-Z_\s-]+$/;
+                const passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@])[a-zA-Z0-9_@-]+$/;
+
+
+                if ((!fullName.match(fullNameCheck) || phonenum == "" || !password.match(passwordCheck) || tick.checked == false) && a == 0) {
+                    buttonMoveLeft();
+                    a = 1;
+                    return false;
+                }
+
+                if ((!fullName.match(fullNameCheck) || phonenum == "" || !password.match(passwordCheck) || tick.checked == false) && a == 1) {
+                    buttonMoveRight();
+                    a = 2;
+                    return false;
+                }
+
+                if ((!fullName.match(fullNameCheck) || phonenum == "" || !password.match(passwordCheck) || tick.checked == false) && a == 2) {
+                    buttonMoveLeft();
+                    a = 1;
+                    return false;
+                }
+
+                else {
+
+                    // document.getElementById('submit-btn').click();  
+                    document.getElementById('submit-btn').style.cursor = 'pointer';
+                    return false;
+                };
+
+            };
+
+
+
+
+            // function buttonMoveLeft() {
+
+            //     const button = document.getElementById('submit-btn');
+            //     button.style.transform = 'translateX(-200%)';
+
+            // };
+
+
+            // function buttonMoveRight() {
+
+            //     const button = document.getElementById('submit-btn');
+            //     button.style.transform = 'translateX(10%)';
+
+            // };
+
+
+            function resetBtn() {
+                const button = document.getElementById('submit-btn');
+                button.style.transform = 'translateX(10%)';
+            };
+
+
+        </script>
+
+
+        <br><br><br><br><br>
+        <br>
+        <br>
+    </section>
+
+
+
+</body>
+
+</html>

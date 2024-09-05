@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        form {
+            margin-bottom: 20px;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #3e8e41;
+        }
+    
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+    
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    
+        .edit-category, .delete-category {
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        .edit-category:hover, .delete-category:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    <form id="category-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Add Category</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="category-list">
+        </tbody>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#category-form').submit(function (e) {
+                e.preventDefault();
+                const name = $('#name').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/categories',
+                    data: JSON.stringify({ name: name }),
+                    contentType: 'application/json',
+                    success: function (category) {
+                        alert(`Category ${category.name} added!`);
+                    },
+                    error: function () {
+                        alert('Error adding category');
+                    }
+                });
+            });
+        });
+        $(function () {
+            // load categories on page load
+            loadCategories();
+    
+            function loadCategories() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/categories',
+                    success: function (categories) {
+                        $('#category-list').empty();
+                        categories.forEach(function (category) {
+                            $('#category-list').append(`
+                    <tr>
+                      <td>${category.id}</td>
+                      <td>${category.name}</td>
+                      <td>
+                        <button class="edit-category" data-id="${category.id}">Edit</button>
+                        <button class="delete-category" data-id="${category.id}">Delete</button>
+                      </td>
+                    </tr>
+                  `);
+                        });
+                    },
+                    error: function () {
+                        alert('Error loading categories');
+                    }
+                });
+            }
+    
+            // handle delete category button click
+            $('#category-list').on('click', '.delete-category', function () {
+                const id = $(this).data('id');
+                if (confirm('Are you sure you want to delete this category?')) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `/api/categories/${id}`,
+                        success: function () {
+                            loadCategories();
+                        },
+                        error: function () {
+                            alert('Error deleting category');
+                        }
+                    });
+                }
+            });
+    
+            // handle edit category button click
+            $('#category-list').on('click', '.edit-category', function () {
+                const id = $(this).data('id');
+                const name = $(this).closest('tr').find('td:nth-child(2)').text();
+                const newName = prompt(`Enter new name for category "${name}"`);
+                if (newName) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/categories/${id}`,
+                        data: JSON.stringify({ name: newName }),
+                        contentType: 'application/json',
+                        success: function () {
+                            loadCategories();
+                        },
+                        error: function () {
+                            alert('Error updating category');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

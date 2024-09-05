@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Online grocery store</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<a href="/src/main/resources/static/style.css"></a>
+<style>
+  .navbar-toggler form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggler form .btn {
+    margin-left: 10px;
+}
+.top {
+    background-image: linear-gradient(to right, #00f811, #c4fc2b);
+    height: 100px;
+    align-items: center;
+    width: 90;
+}
+
+.navbar {
+    margin-top: 50;
+    align-items: center;
+    text-align: center;
+}
+.container-sm {
+    margin-top: 40px;
+    
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+}
+.card-img-top{
+    width: 400px;
+    height: 150px;
+}
+.card-title
+{
+    text-align: center;
+}
+.col-md{
+    padding-right: 50%;
+    text-align: center;
+}
+#heading-logo{
+    padding-left: 600px;
+}
+.md-grow{
+    width: 500px;
+    height: 200px;
+}
+.button :hover
+{
+    color: white
+}
+.button :active
+{
+    background-color: #c4fc2b;
+    color: antiquewhite;
+}
+.button{
+    float: right;
+    background-color: #ff9f00; 
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 40px;
+    justify-content: right;
+    align-items: center;
+    
+  }
+  .center {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  
+    
+  }
+  .line{
+    width:135%;
+    text-align:left;
+    margin-left:0;
+    border : 2px solid green;
+  }
+  .good
+  {
+    background-image: linear-gradient(to right, #00f811, #c4fc2b);
+    height: 100px;
+    align-items: center;
+    font-size: 32px;
+    padding-left: 3%;
+    padding-top: 6%;
+  }
+  .topnav-right {
+    float: right;
+  }
+ .cart :hover
+ {
+    background-color: gainsboro;
+ }
+ .cart
+{
+    width:60px;
+    height:50px;
+    padding-top: 25%;
+    padding-right: 30%
+}
+.int {
+    font-size: 24px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("images/white-concrete-wall.jpg");
+  }
+  
+  header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  main {
+    margin: 20px;
+  }
+  
+  .leadership {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .leader {
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .modi{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  h3 {
+    margin: 10px 0 0;
+  }
+  
+ 
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3em;
+    margin: 0;
+  }
+  h2 {
+    font-size: 2em;
+    color: #007bff;
+    margin-top: 40px;
+  }
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+  .containers {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+</style>
+<body>
+
+<nav>
+<!-- Page Content -->
+<div class="top">
+  <div class="main">
+      <table>
+          <tbody>
+          <tr>
+     <td><div class="container display-container"></div>
+      <div class="col-md" id="heading-logo"><h2><img src="images/logo.png" style="width:200px;height:50px;"></h2></td></div>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+
+</nav>
+<main>
+  <section class="leadership">
+    <h2>Our Leadership Team</h2>
+    <br>
+    <div class="leader">
+      <img class="modi" src="images/krupa.jpg" alt="John Doe">
+      <h3>Krupa Desai</h3>
+      <p>CEO</p>
+      <p>Krupa has been the CEO of our grocery store for over 1 years. She has a passion for providing high-quality products and exceptional customer service.</p>
+    </div>
+    <div class="leader">
+      <img class="modi" src="images/om.jpg" alt="Jane Doe">
+      <h3>Om Pathare</h3>
+      <p>COO</p>
+      <p>Om oversees the day-to-day operations of our store.He is dedicated to creating a positive work environment for our employees and a pleasant shopping experience for our customers.</p>
+    </div>
+    <div class="leader">
+      <img class="modi" src="images/tanuja.jpg" alt="Mark Smith">
+      <h3>Tanuja Sawant</h3>
+      <p>CFO</p>
+      <p>Tanuja manages the financial aspects of our business. She is committed to keeping our prices competitive and ensuring the long-term sustainability of our store.</p>
+    </div>
+    <div class="leader">
+      <img class="modi" src="images/prajakta.jpg" alt="Mark Smith">
+      <h3>Prajakta Patil</h3>
+      <p>CFO</p>
+      <p>Prajakta manages the financial aspects of our business. She is committed to keeping our prices competitive and ensuring the long-term sustainability of our store.</p>
+    </div>
+    <div class="leader">
+      <img class="modi" src="images/siddhi.jpg" alt="Mark Smith">
+      <h3>Siddhi Choughule</h3>
+      <p>CFO</p>
+      <p>Siddhi manages the financial aspects of our business. He is committed to keeping our prices competitive and ensuring the long-term sustainability of our store.</p>
+    </div>
+  </section>
+</main>
+<section class="about">
+  <div class="containers">
+    <h2>About Us</h2>
+    <p>We are a family-owned grocery store that has been serving our community for over 50 years. Our mission is to provide our customers with the freshest produce, highest quality meats, and widest selection of grocery items at affordable prices.</p>
+    <p>We source our produce and meats from local farmers and ranchers whenever possible to support our local economy and provide our customers with the best-tasting products. We also offer a range of organic and natural products for those who prefer a healthier lifestyle.</p>
+    <p>Our friendly staff is dedicated to providing exceptional customer service and making your shopping experience a pleasant one. We value your feedback and are always looking for ways to improve our store and better serve our customers.</p>
+    <p>Thank you for choosing My Grocery Store for all your grocery needs. We look forward to serving you!</p>
+  </div>
+  </section>
+
+  <div class="w3-row w3-margin">
+  </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+  crossorigin="anonymous"></script>
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+     
+</body>
+</html> 
